@@ -1,0 +1,9 @@
+[package]
+name = "bruitsorg"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+maud = "0.27.0"
+maudit = "0.6.4"

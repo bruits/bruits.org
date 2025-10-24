@@ -1,6 +1,6 @@
 @font-face {
 	font-family: "Gluten";
-	src: url("./GlutenVariable.woff2") format("woff2");
+	src: url("./GlutenVariable-subset.woff2") format("woff2");
 	font-weight: 100 900;
 	font-style: normal;
 	font-display: block;
@@ -54,6 +54,7 @@ li svg {
 
 .blurb {
 	margin: 0 2rem;
+	font-size: 1.125rem;
 }
 
 .blurb p:first-of-type {

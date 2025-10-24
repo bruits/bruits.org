@@ -13,9 +13,9 @@ impl Route for Index {
         let goulven = ctx.assets.add_image("src/avatars/goulven.webp");
 
         let projects = [
-        	(include_str!("../maudit.svg"), "Maudit", "Library to generate static websites", "https://maudit.org"),
-         	(include_str!("../sampo.svg"), "Sampo", "Automate changelogs, versioning, and publishing—even for monorepos across multiple package registries", "https://github.com/bruits/sampo"),
-          (include_str!("../game.svg"), "Unannounced Video Game Project", "A new video game by the creator of SinaRun", "#")
+        	(include_str!("../maudit.svg"), "Maudit", "Library to generate static websites", Some("https://maudit.org")),
+         	(include_str!("../sampo.svg"), "Sampo", "Automate changelogs, versioning, and publishing—even for monorepos across multiple package registries", Some("https://github.com/bruits/sampo")),
+          (include_str!("../game.svg"), "Unannounced Video Game Project", "A new video game by the creator of SinaRun", None)
         ];
 
         html! {
@@ -39,32 +39,41 @@ impl Route for Index {
             body {
               div class="container" {
                 header {
-                  (logo.render("The logo of Bruits. The word Bruits with the B turned sideway, and a little smile added to it."))
+                  img src=(logo.url()) width="800" height="191" alt="Bruits logo";
                 }
                 main {
-                  h2 { "Make some noise!" }
                   div.blurb {
                     p {
                         "Bruits is a software and game development collective focused on creating high-quality projects in Rust."
                     }
                     p {
-                    "From "  a href="https://erika.florist/" target="_blank" rel="noopener noreferrer" { (erika.render("Erika's avatar, a bouquet of flower in an 90s anime visual style.")) span {"Erika"} } " and " a href="https://goulven-clech.dev/" target="_blank" rel="noopener noreferrer" {  (goulven.render("Goulven's avatar, a picture of himself")) span {"Goulven"} }
+                    "From "  a href="https://erika.florist/" { (erika.render("Erika's avatar, a bouquet of flower in an 90s anime visual style.")) span {"Erika"} } " and " a href="https://goulven-clech.dev/" {  (goulven.render("Goulven's avatar, a picture of himself")) span {"Goulven"} }
                     }
                   }
                   h2 { "Projects" }
                   ul {
                     @for (logo, name, description, link) in projects.iter() {
-                    a href=(link) target="_blank" rel="noopener noreferrer" {
-                      li {
-                        (PreEscaped(logo))
-                        section {
-                            h3 { (name) }
-                            p { (PreEscaped(description)) }
+                      @if let Some(url) = link {
+                        a href=(url) {
+                          li {
+                            (PreEscaped(logo))
+                            section {
+                                h3 { (name) }
+                                p { (PreEscaped(description)) }
+                            }
+                          }
+                        }
+                      } @else {
+                        li {
+                          (PreEscaped(logo))
+                          section {
+                              h3 { (name) }
+                              p { (PreEscaped(description)) }
+                          }
                         }
                       }
                     }
                   }
-                }
                 }
                 footer {
                     p { "Copyright © 2025 Bruits." }

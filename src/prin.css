@@ -25,6 +25,11 @@ main {
 	padding: 0 2rem;
 }
 
+img {
+	max-width: 100%;
+	height: auto;
+}
+
 header {
 	margin-bottom: 3rem;
 	margin-top: 2rem;

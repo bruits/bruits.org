@@ -76,7 +76,7 @@ impl Route for Index {
                   }
                 }
                 footer {
-                    p { "Copyright © 2025 Bruits." }
+                    p { "Copyright © 2026 Bruits." }
                 }
               }
             }

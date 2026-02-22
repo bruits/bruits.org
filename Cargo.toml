@@ -6,4 +6,5 @@ publish = false
 
 [dependencies]
 maud = "0.27.0"
-maudit = "0.6.4"
+maudit = "0.10.0"
+graphgarden-core = "0.1.0"

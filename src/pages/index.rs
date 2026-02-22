@@ -6,11 +6,11 @@ pub struct Index;
 
 impl Route for Index {
     fn render(&self, ctx: &mut PageContext) -> impl Into<RenderResult> {
-        ctx.assets.include_style("src/prin.css");
-        let logo = ctx.assets.add_image("src/logo.svg");
+        ctx.assets.include_style("src/prin.css")?;
+        let logo = ctx.assets.add_image("src/logo.svg")?;
 
-        let erika = ctx.assets.add_image("src/avatars/erika.webp");
-        let goulven = ctx.assets.add_image("src/avatars/goulven.webp");
+        let erika = ctx.assets.add_image("src/avatars/erika.webp")?;
+        let goulven = ctx.assets.add_image("src/avatars/goulven.webp")?;
 
         let projects = [
         	(include_str!("../maudit.svg"), "Maudit", "Library to generate static websites", Some("https://maudit.org")),
@@ -18,7 +18,7 @@ impl Route for Index {
           (include_str!("../game.svg"), "Unannounced Video Game Project", "A new video game by the creator of SinaRun", None)
         ];
 
-        html! {
+        Ok(html! {
           html {
             head {
               meta charset="utf-8";
@@ -81,6 +81,6 @@ impl Route for Index {
               }
             }
           }
-        }
+        })
     }
 }

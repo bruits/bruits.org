@@ -5,13 +5,15 @@ use graphgarden_core::{
 use maudit::{content_sources, coronate, routes, BuildOptions, BuildOutput};
 
 mod pages {
+    mod chat;
     mod index;
+    pub use chat::Chat;
     pub use index::Index;
 }
 
 fn main() -> Result<BuildOutput, Box<dyn std::error::Error>> {
     let output = coronate(
-        routes![pages::Index],
+        routes![pages::Index, pages::Chat],
         content_sources![],
         BuildOptions::default(),
     )?;

@@ -15,7 +15,8 @@ impl Route for Index {
         let projects = [
         	(include_str!("../maudit.svg"), "Maudit", "Library to generate static websites", Some("https://maudit.org")),
          	(include_str!("../sampo.svg"), "Sampo", "Automate changelogs, versioning, and publishing—even for monorepos across multiple package registries", Some("https://github.com/bruits/sampo")),
-          (include_str!("../game.svg"), "Unannounced Video Game Project", "A new video game by the creator of SinaRun", None)
+          (include_str!("../satteri.svg"), "Sätteri", "High-performance Markdown and MDX processing for the JavaScript ecosystem", Some("https://satteri.bruits.org")),
+          (include_str!("../game.svg"), "Unannounced Video Game Project", "More info in the future...", None)
         ];
 
         Ok(html! {
